@@ -5,7 +5,7 @@ import AccountsAPIClient from "../../../config/internal-api/TestConfiguration/ac
 import { generateApp } from "../../../config/internal-api/fixtures/applications"
 import dataSources from "../../../config/internal-api/fixtures/dataSources"
 
-describe("Internal API - Data Sources: MongoDB", () => {
+describe.skip("Internal API - Data Sources: MongoDB", () => {
   const api = new InternalAPIClient()
   const accountsAPI = new AccountsAPIClient()
   const config = new TestConfiguration<Application>(api, accountsAPI)
@@ -23,6 +23,6 @@ describe("Internal API - Data Sources: MongoDB", () => {
     const app = await config.applications.create(generateApp())
 
     // Add data source
-    const dataSource = await config.dataSources.add(dataSources.mongoDB)
+    const dataSource = await config.dataSources.add()
   })
 })

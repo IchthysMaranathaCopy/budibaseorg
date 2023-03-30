@@ -23,10 +23,11 @@ describe("Internal API - Data Sources: PostgresSQL", () => {
     const app = await config.applications.create(generateApp())
 
     // Add data source
-    const [dataSourceResponse, dataSourceJson] = await config.dataSources.add(
-      dataSources.postgresSQL
+    const [dataSourceResponse, dataSourceJson] = await config.dataSources.add()
+    // Delete data source
+    const deleteResponse = await config.dataSources.delete(
+      <string>dataSourceJson._id,
+      <string>dataSourceJson._rev
     )
-
-    const dataSourceId = dataSourceJson._id
   })
 })

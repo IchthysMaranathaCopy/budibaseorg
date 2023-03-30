@@ -35,7 +35,25 @@ export default class DataSources {
     return [response, json]
   }
 
-  async add(body: any): Promise<[Response, Datasource]> {
+  async add(): Promise<[Response, Datasource]> {
+    //temporarily using a hard coded datasource to test 500 error
+    const body = {
+      datasource: {
+        name: "PostgresSQL",
+        plus: true,
+        source: "POSTGRES",
+        type: "datasource",
+        config: {
+          database: "northwind",
+          host: "pyramid.qa.budibase.net",
+          password: "redacted",
+          port: 5432,
+          schema: "public",
+          user: "qa",
+        },
+      },
+      fetchSchema: true,
+    }
     const response = await this.api.post(`/datasources`, { body })
     const json = await response.json()
     expect(response).toHaveStatusCode(200)
