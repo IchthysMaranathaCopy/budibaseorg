@@ -7,6 +7,7 @@ import RowApi from "./rows"
 import ScreenApi from "./screens"
 import UserManagementApi from "./userManagement"
 import AccountsApi from "./accounts"
+import DataSourcesApi from "./dataSources"
 import { generateAccount } from "../fixtures/accounts"
 
 export default class TestConfiguration<T> {
@@ -20,6 +21,7 @@ export default class TestConfiguration<T> {
   accounts: AccountsApi
   apiClient: InternalAPIClient
   accountsApiClient: AccountsApiClient
+  dataSources: DataSourcesApi
 
   constructor(
     apiClient: InternalAPIClient,
@@ -35,6 +37,7 @@ export default class TestConfiguration<T> {
     this.screen = new ScreenApi(this.apiClient)
     this.users = new UserManagementApi(this.apiClient)
     this.accounts = new AccountsApi(this.accountsApiClient)
+    this.dataSources = new DataSourcesApi(this.apiClient)
     this.context = <T>{}
   }
 
