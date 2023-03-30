@@ -16,9 +16,9 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd())
   return {
     test: {
-      setupFiles: ['./vitest.setup.js'],
+      setupFiles: ["./vitest.setup.js"],
       globals: true,
-      environment: 'jsdom',
+      environment: "jsdom",
     },
     server: {
       fs: {

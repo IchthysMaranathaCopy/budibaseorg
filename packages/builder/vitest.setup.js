@@ -1,8 +1,8 @@
-import { it, expect, describe, beforeEach, vi } from 'vitest'
+import { expect } from "vitest"
 
 expect.extend({
-  toBeFunc: (received) => {
-    if (typeof received === 'function') {
+  toBeFunc: received => {
+    if (typeof received === "function") {
       return {
         pass: true,
       }
