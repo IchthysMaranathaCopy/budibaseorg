@@ -32,8 +32,7 @@ export async function getConfig<T extends Config>(
   const db = context.getGlobalDB()
   try {
     // await to catch error
-    const config = (await db.get(generateConfigID(type))) as T
-    return config
+    return (await db.get(generateConfigID(type))) as T
   } catch (e: any) {
     if (e.status === 404) {
       return
@@ -162,7 +161,7 @@ export async function getGoogleConfig(): Promise<
 export async function getGoogleDatasourceConfig(): Promise<
   GoogleInnerConfig | undefined
 > {
-  if (!env.isDev() && !env.SELF_HOSTED) {
+  if (!env.SELF_HOSTED) {
     // always use the env vars in cloud
     return getDefaultGoogleConfig()
   }
