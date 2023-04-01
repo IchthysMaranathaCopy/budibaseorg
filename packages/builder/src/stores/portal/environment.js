@@ -1,7 +1,6 @@
-import { writable, get } from "svelte/store"
+import { writable } from "svelte/store"
 import { API } from "api"
 import { Constants } from "@budibase/frontend-core"
-import { licensing } from "stores/portal"
 
 export function createEnvironmentStore() {
   const { subscribe, update } = writable({
