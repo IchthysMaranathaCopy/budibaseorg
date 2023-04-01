@@ -15,7 +15,7 @@
   export let autofocus = false
   export let variables
   export let showModal
-  export let environmentVariablesEnabled
+  export let environmentVariablesEnabled = true
   export let handleUpgradePanel
   const dispatch = createEventDispatcher()
 
