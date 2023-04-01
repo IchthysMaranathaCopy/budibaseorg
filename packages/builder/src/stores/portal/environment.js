@@ -18,14 +18,12 @@ export function createEnvironmentStore() {
   }
 
   async function loadVariables() {
-    if (get(licensing).environmentVariablesEnabled) {
-      const envVars = await API.fetchEnvironmentVariables()
-      const mappedVars = envVars.variables.map(name => ({ name }))
-      update(store => {
-        store.variables = mappedVars
-        return store
-      })
-    }
+    const envVars = await API.fetchEnvironmentVariables()
+    const mappedVars = envVars.variables.map(name => ({ name }))
+    update(store => {
+      store.variables = mappedVars
+      return store
+    })
   }
 
   async function createVariable(data) {
