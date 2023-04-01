@@ -178,9 +178,6 @@
           label="Date range"
           bind:value={timeRange}
           options={timeOptions}
-          isOptionEnabled={x => {
-            return true
-          }}
         />
       </div>
     </div>
