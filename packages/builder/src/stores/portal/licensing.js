@@ -13,8 +13,8 @@ export const createLicensingStore = () => {
     license: undefined,
     isFreePlan: true,
     // features
-    groupsEnabled: false,
-    backupsEnabled: false,
+    groupsEnabled: true,
+    backupsEnabled: true,
     // the currently used quotas from the db
     quotaUsage: undefined,
     // derived quota metrics for percentages used
