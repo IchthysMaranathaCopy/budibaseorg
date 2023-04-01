@@ -31,3 +31,5 @@ export interface AutomationContext extends AutomationResults {
 export interface AutomationMetadata extends Document {
   errorCount?: number
 }
+
+export const autoparam = { stepno: 0, maxstep: 0 }
