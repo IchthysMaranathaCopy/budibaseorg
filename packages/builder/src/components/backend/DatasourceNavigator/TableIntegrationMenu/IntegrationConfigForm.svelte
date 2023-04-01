@@ -189,7 +189,7 @@
             on:change
             bind:value={config[configKey]}
             error={getDisplayError($validation.errors[configKey], configKey)}
-            environmentVariablesEnabled={$licensing.environmentVariablesEnabled}
+            environmentVariablesEnabled="true"
             {handleUpgradePanel}
           />
         </div>
