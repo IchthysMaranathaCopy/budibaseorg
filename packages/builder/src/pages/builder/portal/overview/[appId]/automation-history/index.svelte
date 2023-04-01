@@ -179,13 +179,6 @@
           bind:value={timeRange}
           options={timeOptions}
           isOptionEnabled={x => {
-            if (licensePlan?.type === Constants.PlanType.FREE) {
-              return ["1-w", "30-d", "90-d"].indexOf(x.value) < 0
-            } else if (licensePlan?.type === Constants.PlanType.TEAM) {
-              return ["90-d"].indexOf(x.value) < 0
-            } else if (licensePlan?.type === Constants.PlanType.PRO) {
-              return ["30-d", "90-d"].indexOf(x.value) < 0
-            }
             return true
           }}
         />
