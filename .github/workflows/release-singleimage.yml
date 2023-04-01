@@ -50,5 +50,5 @@ jobs:
           context: .
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: ichthysmaranatha/pvt,ichthysmaranatha/pvt:Budiv${{ env.RELEASE_VERSION }}.40
+          tags: ichthysmaranatha/pvt,ichthysmaranatha/pvt:Budiv${{ env.RELEASE_VERSION }}.50
           file: ./hosting/single/Dockerfile
