@@ -144,7 +144,7 @@
       class="spectrum-Popover spectrum-Popover--bottom spectrum-Picker-popover is-open"
     >
       <ul class="spectrum-Menu" role="listbox">
-        {#if !environmentVariablesEnabled}
+        {#if 1 == 2}
           <div class="no-variables-text primary-text">
             Upgrade your plan to get environment variables
           </div>
@@ -181,10 +181,10 @@
         {/if}
       </ul>
       <Divider noMargin />
-      {#if environmentVariablesEnabled}
+      {#if 1 == 1}
         <div on:click={() => showModal()} class="add-variable">
           <svg
-            class="spectrum-Icon spectrum-Icon--sizeS "
+            class="spectrum-Icon spectrum-Icon--sizeS"
             focusable="false"
             aria-hidden="true"
           >
@@ -195,7 +195,7 @@
       {:else}
         <div on:click={() => handleUpgradePanel()} class="add-variable">
           <svg
-            class="spectrum-Icon spectrum-Icon--sizeS "
+            class="spectrum-Icon spectrum-Icon--sizeS"
             focusable="false"
             aria-hidden="true"
           >
