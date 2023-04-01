@@ -54,22 +54,12 @@ export const createLicensingStore = () => {
     setLicense: () => {
       const license = get(auth).user.license
       const isFreePlan = license?.plan.type === Constants.PlanType.FREE
-      const groupsEnabled = license.features.includes(
-        Constants.Features.USER_GROUPS
-      )
-      const backupsEnabled = license.features.includes(
-        Constants.Features.BACKUPS
-      )
-      const environmentVariablesEnabled = license.features.includes(
-        Constants.Features.ENVIRONMENT_VARIABLES
-      )
-      const enforceableSSO = license.features.includes(
-        Constants.Features.ENFORCEABLE_SSO
-      )
+      const groupsEnabled = true
+      const backupsEnabled = true
+      const environmentVariablesEnabled = true
+      const enforceableSSO = true
 
-      const auditLogsEnabled = license.features.includes(
-        Constants.Features.AUDIT_LOGS
-      )
+      const auditLogsEnabled = true
       store.update(state => {
         return {
           ...state,
