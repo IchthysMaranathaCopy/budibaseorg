@@ -11,7 +11,7 @@ export function createEnvironmentStore() {
   async function checkStatus() {
     const status = await API.checkEnvironmentVariableStatus()
     update(store => {
-      store.status = status
+      store.status = !status
       return store
     })
   }
