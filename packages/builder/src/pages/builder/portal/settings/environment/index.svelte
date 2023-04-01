@@ -7,7 +7,7 @@
     InlineAlert,
     notifications,
   } from "@budibase/bbui"
-  import { environment, licensing } from "stores/portal"
+  import { environment } from "stores/portal"
   import { onMount } from "svelte"
   import CreateEditVariableModal from "components/portal/environment/CreateEditVariableModal.svelte"
   import EditVariableColumn from "./_components/EditVariableColumn.svelte"
