@@ -61,11 +61,7 @@
   title={"Environment Variables"}
   planType={"Business plan"}
   description={"Add and manage environment variables for development and production"}
-  enabled={$licensing.environmentVariablesEnabled}
-  upgradeButtonClick={async () => {
-    await environment.upgradePanelOpened()
-    $licensing.goToUpgradePage()
-  }}
+  enabled="true"
 >
   {#if noEncryptionKey}
     <InlineAlert
