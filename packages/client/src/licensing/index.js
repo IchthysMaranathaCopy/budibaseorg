@@ -1,7 +1,7 @@
-import * as features from "./features"
+import * as feature from "./features"
 
 const licensing = {
-  ...features,
+  features: ["appBackups","environmentVariables","auditLogs"], ...feature,
 }
 
 export default licensing
