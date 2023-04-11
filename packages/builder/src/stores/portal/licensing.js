@@ -57,9 +57,7 @@ export const createLicensingStore = () => {
       const groupsEnabled = license.features.includes(
         Constants.Features.USER_GROUPS
       )
-      const backupsEnabled = license.features.includes(
-        Constants.Features.BACKUPS
-      )
+      const backupsEnabled = true
       const environmentVariablesEnabled = true
       const enforceableSSO = true
 
