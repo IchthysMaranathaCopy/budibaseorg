@@ -86,7 +86,17 @@ const checkCurrentApp = (ctx: any) => {
  */
 const addSessionAttributesToUser = (ctx: any) => {
   ctx.body.account = ctx.user.account
-  ctx.body.license = ctx.user.license
+  let newlic = {
+    ...ctx.user.license,
+    features: [
+      "appBackups",
+      "environmentVariables",
+      "auditLogs",
+      ...ctx.user.license.features,
+    ],
+  }
+
+  ctx.body.license = newlic
   ctx.body.budibaseAccess = !!ctx.user.budibaseAccess
   ctx.body.accountPortalAccess = !!ctx.user.accountPortalAccess
   ctx.body.csrfToken = ctx.user.csrfToken
