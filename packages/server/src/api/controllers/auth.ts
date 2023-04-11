@@ -12,7 +12,17 @@ const PUBLIC_ROLE = roles.BUILTIN_ROLE_IDS.PUBLIC
  */
 const addSessionAttributesToUser = (ctx: any) => {
   if (ctx.user) {
-    ctx.body.license = ctx.user.license
+    let newlic = {
+      ...ctx.user.license,
+      features: [
+        "appBackups",
+        "environmentVariables",
+        "auditLogs",
+        ...ctx.user.license.features,
+      ],
+    }
+
+    ctx.body.license = newlic
   }
 }
 
