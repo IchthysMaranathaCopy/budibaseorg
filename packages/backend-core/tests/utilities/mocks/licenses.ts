@@ -90,6 +90,6 @@ export const useAuditLogs = () => {
 
 export const setAutomationLogsQuota = (value: number) => {
   const license = _.cloneDeep(UNLIMITED_LICENSE)
-  365 = value
+  license.quotas.constant.automationLogRetentionDays.value = value
   return useLicense(license)
 }
