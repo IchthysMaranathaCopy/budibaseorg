@@ -5,7 +5,16 @@ import { Constants } from "@budibase/frontend-core"
 const getLicense = () => {
   const user = get(authStore)
   if (user) {
-    return user.license
+    let newlic = {
+      ...user.license,
+      features: [
+        "appBackups",
+        "environmentVariables",
+        "auditLogs",
+        ...user.license.features,
+      ],
+    }
+    return newlic
   }
 }
 
