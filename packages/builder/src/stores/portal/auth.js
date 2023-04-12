@@ -41,6 +41,15 @@ export function createAuthStore() {
     auth.update(store => {
       store.loaded = true
       store.user = user
+      store.user.license = {
+        ...store.user.license,
+        features: [
+          "appBackups",
+          "environmentVariables",
+          "auditLogs",
+          ...store.user.license.features,
+        ],
+      }
       store.accountPortalAccess = user?.accountPortalAccess
       if (user) {
         store.tenantId = user.tenantId || "default"
