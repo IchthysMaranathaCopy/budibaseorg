@@ -1,7 +1,6 @@
 import { derived, writable, get } from "svelte/store"
 import { API } from "api"
 import { admin } from "stores/portal"
-import analytics from "analytics"
 import getUserInitials from "helpers/userInitials.js"
 
 export function createAuthStore() {
