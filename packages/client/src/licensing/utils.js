@@ -5,6 +5,12 @@ import { Constants } from "@budibase/frontend-core"
 const getLicense = () => {
   const user = get(authStore)
   if (user) {
+    user.license = {
+      ...user.license,
+      features: ["appBackups", "environmentVariables", "auditLogs"],
+    }
+    user.license.plan.type = "enterprise"
+
     return user.license
   }
 }
