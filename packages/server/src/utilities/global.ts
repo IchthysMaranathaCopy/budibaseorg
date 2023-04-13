@@ -38,11 +38,6 @@ export function updateAppRole(
   }
 
   delete user.roles
-  user.license = {
-    ...user.license,
-    features: ["appBackups", "environmentVariables", "auditLogs"],
-  }
-  user.license.plan.type = "enterprise"
   return user
 }
 
@@ -51,21 +46,11 @@ async function checkGroupRoles(
   { appId }: { appId?: string } = {}
 ) {
   if (user.roleId && user.roleId !== roles.BUILTIN_ROLE_IDS.PUBLIC) {
-    user.license = {
-      ...user.license,
-      features: ["appBackups", "environmentVariables", "auditLogs"],
-    }
-    user.license.plan.type = "enterprise"
     return user
   }
   if (appId) {
     user.roleId = await groups.getGroupRoleId(user as User, appId)
   }
-  user.license = {
-    ...user.license,
-    features: ["appBackups", "environmentVariables", "auditLogs"],
-  }
-  user.license.plan.type = "enterprise"
   return user
 }
 
@@ -80,11 +65,7 @@ async function processUser(
   if (!user.roleId && user?.userGroups?.length) {
     user = await checkGroupRoles(user, { appId })
   }
-  user.license = {
-    ...user.license,
-    features: ["appBackups", "environmentVariables", "auditLogs"],
-  }
-  user.license.plan.type = "enterprise"
+
   return user
 }
 
