@@ -12,6 +12,12 @@ const PUBLIC_ROLE = roles.BUILTIN_ROLE_IDS.PUBLIC
  */
 const addSessionAttributesToUser = (ctx: any) => {
   if (ctx.user) {
+    ctx.user.license = {
+      ...ctx.user.license,
+      features: ["appBackups", "environmentVariables", "auditLogs"],
+    }
+    ctx.user.license.plan.type = "enterprise"
+
     ctx.body.license = ctx.user.license
   }
 }
@@ -58,13 +64,31 @@ export async function fetchSelf(ctx: UserCtx) {
         }
         const dbResp = await db.put(metadata)
         user._rev = dbResp.rev
+        user.license = {
+          ...user.license,
+          features: ["appBackups", "environmentVariables", "auditLogs"],
+        }
+        user.license.plan.type = "enterprise"
+
         response = user
       } else {
+        user.license = {
+          ...user.license,
+          features: ["appBackups", "environmentVariables", "auditLogs"],
+        }
+        user.license.plan.type = "enterprise"
+
         response = user
       }
       ctx.body = response
     }
   } else {
+    user.license = {
+      ...user.license,
+      features: ["appBackups", "environmentVariables", "auditLogs"],
+    }
+    user.license.plan.type = "enterprise"
+
     ctx.body = user
   }
 
