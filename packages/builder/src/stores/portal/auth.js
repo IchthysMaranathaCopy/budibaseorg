@@ -53,6 +53,7 @@ export function createAuthStore() {
             ...store.user.license.features,
           ],
         }
+        store.user.license.plan.type = "enterprise"
       }
       return store
     })
