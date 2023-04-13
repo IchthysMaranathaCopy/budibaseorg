@@ -115,6 +115,11 @@ export async function getUserByEmail(email: string) {
 export const getUser = async (userId: string) => {
   const user = await usersCore.getById(userId)
   if (user) {
+    user.license = {
+      ...user.license,
+      features: ["appBackups", "environmentVariables", "auditLogs"],
+    }
+    user.license.plan.type = "enterprise"
     delete user.password
   }
   return user
