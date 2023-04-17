@@ -22,7 +22,13 @@ jobs:
         with:
           find: "@budibase/pro"
           replace: "@ichthysmaranathacopy/bud"
-          regex: false                       
+          regex: false          
+      - name: Find and Replace2
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "@ichthysmaranathacopy/bud/-/pro-2.5.2.tgz"
+          replace: "@budibase/pro/-/pro-2.5.2.tgz"
+          regex: false 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
