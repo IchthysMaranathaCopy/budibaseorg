@@ -28,7 +28,11 @@ jobs:
         with:
           find: "@ichthysmaranathacopy/bud/-/pro-2.5.2.tgz"
           replace: "@budibase/pro/-/pro-2.5.2.tgz"
-          regex: false 
+          regex: false
+      - name: Create NPMRC
+        run: |
+            echo "//npm.pkg.github.com/:_authToken=${{ secrets.TOKEN }}" >> ~/.npmrc
+            echo "@ichthysmaranathacopy:registry=https://npm.pkg.github.com" >> ~/.npmrc          
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -38,10 +42,6 @@ jobs:
       - name: Setup Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@v1
-      - name: Create NPMRC
-        run: |
-            echo "//npm.pkg.github.com/:_authToken=${{ secrets.TOKEN }}" >> ~/.npmrc
-            echo "@ichthysmaranathacopy:registry=https://npm.pkg.github.com" >> ~/.npmrc
       - name: Run Yarn
         run: yarn
       - name: Run Yarn add
