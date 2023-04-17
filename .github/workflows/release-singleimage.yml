@@ -5,6 +5,7 @@ on:
 
 env:
   CI: true
+  TOKEN: ${{ secrets.TOKEN }}
   REGISTRY_URL: registry.hub.docker.com
 jobs:
   build:
