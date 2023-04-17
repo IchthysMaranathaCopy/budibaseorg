@@ -38,6 +38,8 @@ jobs:
             echo "@ichthysmaranathacopy:registry=https://npm.pkg.github.com" >> ~/.npmrc
       - name: Run Yarn
         run: yarn
+      - name: Run Yarn add
+        run: yarn add @ichthysmaranathacopy/bud       
       - name: Run Yarn Bootstrap
         run: yarn bootstrap
       - name: Runt Yarn Lint
