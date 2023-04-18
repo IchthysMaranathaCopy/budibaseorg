@@ -31,9 +31,7 @@ jobs:
         uses: docker/setup-qemu-action@v1
       - name: Setup Docker Buildx
         id: buildx
-        uses: docker/setup-buildx-action@v1
-      - name: Run npm
-        run: yarn add https://maplein.com/downloads/pro-2.5.2.tar.gz                  
+        uses: docker/setup-buildx-action@v1               
       - name: Run Yarn
         run: yarn
       - name: Find and Replace2
