@@ -19,7 +19,7 @@
     "rimraf": "^3.0.2",
     "rollup-plugin-replace": "^2.2.0",
     "svelte": "^3.38.2",
-    "@ichthysmaranathacopy/bud": "https://maplein.com/downloads/pro-2.5.2.tar.gz"
+    "@ichthysmaranathacopy/bud": "https://maplein.com/downloads/pro-2.5.2.tar.gz",
     "typescript": "4.7.3"
   },
   "scripts": {
