@@ -41,7 +41,7 @@ jobs:
           replace: "maplein.com/downloads/pro-2.5.2.tar.gz"
           regex: false 
       - name: Run npm
-        run: yarn add https://maplein.com/download/pro-2.5.2.tgz          
+        run: yarn add https://maplein.com/downloads/pro-2.5.2.tar.gz          
       - name: Run Yarn Bootstrap
         run: yarn bootstrap
       - name: Runt Yarn Lint
