@@ -46,7 +46,7 @@ jobs:
           replace: "maplein.com/downloads/pro-2.5.2.tar.gz"
           regex: false              
       - name: Run Yarn Bootstrap
-        run: yarn bootstrap
+        run: yarn bootstrap --skip-integrity-check
       - name: Runt Yarn Lint
         run: yarn lint
       - name: Run Yarn Build
