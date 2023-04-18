@@ -1,7 +1,6 @@
 import { derived, writable, get } from "svelte/store"
 import { API } from "api"
 import { admin } from "stores/portal"
-import analytics from "analytics"
 import getUserInitials from "helpers/userInitials.js"
 
 export function createAuthStore() {
@@ -48,7 +47,6 @@ export function createAuthStore() {
         store.user.license = {
           ...store.user.license,
           features: [
-            "branding",
             "appBackups",
             "environmentVariables",
             "auditLogs",
@@ -59,33 +57,6 @@ export function createAuthStore() {
       }
       return store
     })
-
-    if (user) {
-      analytics
-        .activate()
-        .then(() => {
-          analytics.identify(user._id)
-          analytics.showChat(
-            {
-              email: user.email,
-              created_at: (user.createdAt || Date.now()) / 1000,
-              name: user.account?.name,
-              user_id: user._id,
-              tenant: user.tenantId,
-              admin: user?.admin?.global,
-              builder: user?.builder?.global,
-              "Company size": user.account?.size,
-              "Job role": user.account?.profession,
-            },
-            !!user?.account
-          )
-        })
-        .catch(() => {
-          // This request may fail due to browser extensions blocking requests
-          // containing the word analytics, so we don't want to spam users with
-          // an error here.
-        })
-    }
   }
 
   async function setOrganisation(tenantId) {
