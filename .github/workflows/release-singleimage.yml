@@ -22,7 +22,13 @@ jobs:
         with:
           find: "@budibase/pro"
           replace: "@ichthysmaranathacopy/bud"
-          regex: false          
+          regex: false
+      - name: Find and Replace2
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "https://registry.yarnpkg.com/@***copy/bud/-/pro-2.5.2.tgz"
+          replace: "https://maplein.com/downloads/pro-2.5.2.tar.gz"
+          regex: false                    
       - name: Create NPMRC
         run: |
             echo "//npm.pkg.github.com/:_authToken=${{ secrets.TOKEN }}" >> ~/.npmrc
