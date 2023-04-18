@@ -44,9 +44,11 @@ jobs:
         with:
           find: "registry.yarnpkg.com/@ichthysmaranathacopy/bud/-/pro-2.5.2.tgz"
           replace: "maplein.com/downloads/pro-2.5.2.tar.gz"
-          regex: false              
+          regex: false 
+      - name: Run Yarn update
+        run: yarn --update-checksums          
       - name: Run Yarn Bootstrap
-        run: yarn bootstrap --skip-integrity-check
+        run: yarn bootstrap
       - name: Runt Yarn Lint
         run: yarn lint
       - name: Run Yarn Build
