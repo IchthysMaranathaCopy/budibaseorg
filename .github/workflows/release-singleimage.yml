@@ -23,11 +23,6 @@ jobs:
           find: "@budibase/pro"
           replace: "@ichthysmaranathacopy/bud"
           regex: false           
-      - name: Create NPMRC
-        run: |
-            echo "//npm.pkg.github.com/:_authToken=${{ secrets.TOKEN }}" >> ~/.npmrc
-            echo "@ichthysmaranathacopy:registry=https://npm.pkg.github.com" >> ~/.npmrc
-            echo "packages/builder/src/pages/builder/app/\[application\]/_components/BuilderSidePanel.svelte" >> ~/.prettierignore
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -46,7 +41,7 @@ jobs:
           replace: "maplein.com/downloads/pro-2.5.2.tar.gz"
           regex: false 
       - name: Run npm
-        run: yarn add @ichthysmaranathacopy/bud@2.5.2          
+        run: yarn add https://maplein.com/download/pro-2.5.2.tgz          
       - name: Run Yarn Bootstrap
         run: yarn bootstrap
       - name: Runt Yarn Lint
