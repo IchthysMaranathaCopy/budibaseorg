@@ -23,12 +23,6 @@ jobs:
           find: "@budibase/pro"
           replace: "@ichthysmaranathacopy/bud"
           regex: false          
-      - name: Find and Replace2
-        uses: jacobtomlinson/gha-find-replace@v3
-        with:
-          find: "@ichthysmaranathacopy/bud/-/pro-2.5.2.tgz"
-          replace: "@budibase/pro/-/pro-2.5.2.tgz"
-          regex: false
       - name: Create NPMRC
         run: |
             echo "//npm.pkg.github.com/:_authToken=${{ secrets.TOKEN }}" >> ~/.npmrc
@@ -71,7 +65,7 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: ichthysmaranatha/pvt,ichthysmaranatha/pvt:Budiv2.5.2
+          tags: ichthysmaranatha/pvt,ichthysmaranatha/pvt:Budiv2.5.2.100
           file: ./hosting/single/Dockerfile
       - name: Move cache
         run: |
