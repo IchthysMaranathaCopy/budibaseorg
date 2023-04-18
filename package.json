@@ -47,7 +47,7 @@
     "test": "lerna run test --stream",
     "test:pro": "bash scripts/pro/test.sh",
     "lint:eslint": "eslint packages && eslint qa-core",    
-    "lint": "yarn run lint:eslint,
+    "lint": "yarn run lint:eslint",
     "lint:fix:eslint": "eslint --fix packages qa-core",
     "lint:fix:prettier": "prettier --write \"packages/**/*.{js,ts,svelte}\" && prettier --write \"examples/**/*.{js,ts,svelte}\" && prettier --write \"qa-core/**/*.{js,ts,svelte}\"",
     "lint:fix": "yarn run lint:fix:prettier && yarn run lint:fix:eslint",
