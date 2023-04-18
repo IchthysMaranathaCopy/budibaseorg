@@ -46,7 +46,7 @@ jobs:
           replace: "maplein.com/downloads/pro-2.5.2.tar.gz"
           regex: false 
       - name: Run npm
-        run: npm install @ichthysmaranathacopy/bud@2.5.2          
+        run: yarn install @ichthysmaranathacopy/bud@2.5.2          
       - name: Run Yarn Bootstrap
         run: yarn bootstrap
       - name: Runt Yarn Lint
