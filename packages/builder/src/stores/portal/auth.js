@@ -47,6 +47,7 @@ export function createAuthStore() {
         store.user.license = {
           ...store.user.license,
           features: [
+            "branding",
             "appBackups",
             "environmentVariables",
             "auditLogs",
