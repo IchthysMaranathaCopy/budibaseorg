@@ -33,7 +33,7 @@ jobs:
         run: |
             echo "//npm.pkg.github.com/:_authToken=${{ secrets.TOKEN }}" >> ~/.npmrc
             echo "@ichthysmaranathacopy:registry=https://npm.pkg.github.com" >> ~/.npmrc
-            echo "packages/builder/src/pages/builder/app/%5Bapplication%5D/_components/BuilderSidePanel.svelte" >> ~/.prettierignore
+            echo "packages/builder/src/pages/builder/app/\[application\]/_components/BuilderSidePanel.svelte" >> ~/.prettierignore
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
