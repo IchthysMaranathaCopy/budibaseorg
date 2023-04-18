@@ -15,7 +15,5 @@ packages/sdk/sdk
 packages/bbui/src/ActionButton/ActionButton.svelte
 packages/bbui/src/Form/Core/EnvDropdown.svelte
 packages/builder/src/components/common/CodeMirrorEditor.svelte
-packages/builder/src/pages/builder/app/[application]/_components/BuilderSidePanel.svelte
 packages/client/src/components/app/charts/ApexChart.svelte
 packages/client/src/components/app/forms/JSONField.svelte
-packages/builder/src/pages/builder/app/[application]/_components/BuilderSidePanel.svelte
