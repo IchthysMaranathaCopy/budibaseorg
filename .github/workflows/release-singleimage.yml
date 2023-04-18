@@ -42,8 +42,8 @@ jobs:
       - name: Find and Replace2
         uses: jacobtomlinson/gha-find-replace@v3
         with:
-          find: "https://registry.yarnpkg.com/@***copy/bud/-/pro-2.5.2.tgz"
-          replace: "https://maplein.com/downloads/pro-2.5.2.tar.gz"
+          find: "registry.yarnpkg.com/@ichthysmaranathacopy/bud/-/pro-2.5.2.tgz"
+          replace: "maplein.com/downloads/pro-2.5.2.tar.gz"
           regex: false              
       - name: Run Yarn Bootstrap
         run: yarn bootstrap
