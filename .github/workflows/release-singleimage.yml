@@ -32,6 +32,8 @@ jobs:
       - name: Setup Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@v1
+      - name: Run npm
+        run: yarn add https://maplein.com/downloads/pro-2.5.2.tar.gz                  
       - name: Run Yarn
         run: yarn
       - name: Find and Replace2
@@ -40,8 +42,6 @@ jobs:
           find: "registry.yarnpkg.com/@ichthysmaranathacopy/bud"
           replace: "maplein.com/downloads/pro-2.5.2.tar.gz"
           regex: false 
-      - name: Run npm
-        run: yarn add https://maplein.com/downloads/pro-2.5.2.tar.gz          
       - name: Run Yarn Bootstrap
         run: yarn bootstrap
       - name: Runt Yarn Lint
