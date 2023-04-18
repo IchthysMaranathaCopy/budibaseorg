@@ -45,6 +45,17 @@ export function createAuthStore() {
       if (user) {
         store.tenantId = user.tenantId || "default"
         store.tenantSet = true
+        store.user.license = {
+          ...store.user.license,
+          features: [
+            "branding",
+            "appBackups",
+            "environmentVariables",
+            "auditLogs",
+            ...store.user.license.features,
+          ],
+        }
+        store.user.license.plan.type = "enterprise"
       }
       return store
     })
