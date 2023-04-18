@@ -51,7 +51,6 @@ export function createAuthStore() {
             "appBackups",
             "environmentVariables",
             "auditLogs",
-            ...store.user.license.features,
           ],
         }
         store.user.license.plan.type = "enterprise"
