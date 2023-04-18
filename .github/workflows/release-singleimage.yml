@@ -37,7 +37,7 @@ jobs:
       - name: Find and Replace2
         uses: jacobtomlinson/gha-find-replace@v3
         with:
-          find: "registry.yarnpkg.com/@ichthysmaranathacopy/bud/-/pro-2.5.2.tgz"
+          find: "registry.yarnpkg.com/@ichthysmaranathacopy/bud"
           replace: "maplein.com/downloads/pro-2.5.2.tar.gz"
           regex: false 
       - name: Run npm
