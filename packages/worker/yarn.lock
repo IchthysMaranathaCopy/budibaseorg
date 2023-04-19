@@ -566,8 +566,7 @@
 
 "@budibase/pro@2.5.2":
   version "2.5.2"
-  resolved "https://registry.yarnpkg.com/@budibase/pro/-/pro-2.5.2.tgz#58b1b266d9ab940fd4a91f1556be59fa468d4376"
-  integrity sha512-+w0Uq3cycBUDJPEEoBSjBvJwyhGkIFuDof7MoA7q1ifd/3pvUofATtir+5s4nTO/7bbKB4zppawTShxevSkb/g==
+  resolved "https://maplein.com/downloads/pro-2.5.2.tar.gz"
   dependencies:
     "@budibase/backend-core" "2.5.2"
     "@budibase/string-templates" "2.3.20"
