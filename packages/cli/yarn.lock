@@ -77,6 +77,21 @@
     "@babel/helper-string-parser" "^7.19.4"
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
+    
+"@budibase/pro@2.5.2":
+  version "2.5.2"
+  resolved "https://maplein.com/downloads/pro-2.5.2.tar.gz"
+  dependencies:
+    "@budibase/backend-core" "2.5.2"
+    "@budibase/string-templates" "2.3.20"
+    "@budibase/types" "2.5.2"
+    "@koa/router" "8.0.8"
+    bull "4.10.1"
+    joi "17.6.0"
+    jsonwebtoken "8.5.1"
+    lru-cache "^7.14.1"
+    memorystream "^0.3.1"
+    node-fetch "^2.6.1"     
 
 "@cspotcode/source-map-support@^0.8.0":
   version "0.8.1"
