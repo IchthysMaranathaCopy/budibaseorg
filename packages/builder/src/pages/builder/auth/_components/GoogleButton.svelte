@@ -3,7 +3,8 @@
   import GoogleLogo from "assets/google-logo.png"
   import { auth, organisation } from "stores/portal"
 
-  let show
+    export let samePage
+    let show
 
   $: tenantId = $auth.tenantId
   $: show = $organisation.google
