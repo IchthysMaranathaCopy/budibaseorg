@@ -54,7 +54,7 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: ichthysmaranatha/pvt,ichthysmaranatha/pvt:Budiv2.5.2.500
+          tags: ichthysmaranatha/pvt,ichthysmaranatha/pvt:Budiv2.5.2.600
           file: ./hosting/single/Dockerfile
       - name: Move cache
         run: |
