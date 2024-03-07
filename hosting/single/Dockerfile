@@ -71,7 +71,8 @@ RUN chmod +x ./healthcheck.sh
 # For Azure App Service install SSH & point data locations to /home
 ADD hosting/single/ssh/sshd_config /etc/
 ADD hosting/single/ssh/ssh_setup.sh /tmp
-RUN /build-target-paths.sh
+RUN sed -i "s#DATA_DIR#/data#g" /opt/clouseau/clouseau.ini && \
+  sed -i "s#DATA_DIR#/data#g" /opt/couchdb/etc/local.ini
 
 # cleanup cache
 RUN yarn cache clean -f
