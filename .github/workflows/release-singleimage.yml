@@ -20,7 +20,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '14'
-          cache: 'yarn'
       - name: Setup QEMU
         uses: docker/setup-qemu-action@v1
       - name: Setup Docker Buildx
@@ -34,13 +33,6 @@ jobs:
         run: yarn lint
       - name: Run Yarn Build
         run: yarn build:docker:pre
-      - name: Cache Docker layers
-        uses: actions/cache@v2
-        with:
-          path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-buildx-        
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
@@ -50,13 +42,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache-new
           push: true
           platforms: linux/amd64,linux/arm64
           tags: ichthysmaranatha/pvt,ichthysmaranatha/pvt:Budiv2.5.2.600
           file: ./hosting/single/Dockerfile
-      - name: Move cache
-        run: |
-          rm -rf /tmp/.buildx-cache
-          mv /tmp/.buildx-cache-new /tmp/.buildx-cache   
