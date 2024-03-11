@@ -28,6 +28,7 @@
   $: cloud = $admin.cloud
 
   if ($organisation.isSSOEnforced) {
+    oidc.init()
     const url = `/api/global/auth/${$auth.tenantId}/oidc/configs/${$oidc.uuid}`
     window.location = url
   }
