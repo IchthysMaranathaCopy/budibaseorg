@@ -28,13 +28,6 @@
   $: cloud = $admin.cloud
 
   if ($organisation.isSSOEnforced) {
-    onMount(async () => {
-      try {
-        await oidc.init()
-      } catch (error) {
-        notifications.error("Error getting OIDC config")
-      }
-    })
     const url = `/api/global/auth/${$auth.tenantId}/oidc/configs/${$oidc.uuid}`
     window.location = url
   }
