@@ -80,6 +80,7 @@ const environment = {
   MULTI_TENANCY: process.env.MULTI_TENANCY,
   ENABLE_ANALYTICS: process.env.ENABLE_ANALYTICS,
   SELF_HOSTED: process.env.SELF_HOSTED,
+  UNIV_BASIC: process.env.UNIV_BASIC,
   HTTP_MB_LIMIT: process.env.HTTP_MB_LIMIT,
   // old
   CLIENT_ID: process.env.CLIENT_ID,
