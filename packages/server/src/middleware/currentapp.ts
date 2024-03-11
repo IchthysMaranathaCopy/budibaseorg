@@ -40,7 +40,7 @@ export default async (ctx: UserCtx, next: any) => {
     appId = requestAppId
     // retrieving global user gets the right role
     roleId = globalUser.roleId || roleId
-    if (ctx.user && roleId == BUILTIN_ROLE_IDS.PUBLIC && env.UNIV_BASIC)
+    if (ctx.user && roleId == roles.BUILTIN_ROLE_IDS.PUBLIC && env.UNIV_BASIC)
       roleId = roles.BUILTIN_ROLE_IDS.BASIC
     // Allow builders to specify their role via a header
     const isBuilder =
