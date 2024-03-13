@@ -27,7 +27,7 @@
   $: company = $organisation.company || "Budibase"
   $: cloud = $admin.cloud
 
-  if ($organisation.isSSOEnforced) {
+  if ($admin.directoidc) {
     organisation
       .init()
       .then(() => oidc.init())
@@ -37,7 +37,7 @@
       })
   }
   async function login() {
-    if (!$organisation.isSSOEnforced) {
+    if (!$admin.directoidc) {
       form.validate()
       if (Object.keys(errors).length > 0) {
         console.log("errors", errors)
@@ -59,7 +59,7 @@
       }
     }
   }
-  if (!$organisation.isSSOEnforced) {
+  if (!$admin.directoidc) {
     onMount(async () => {
       try {
         await organisation.init()
