@@ -28,9 +28,11 @@
   $: cloud = $admin.cloud
 
   if ($organisation.isSSOEnforced) {
-    oidc.init()
-    const url = `/api/global/auth/${$auth.tenantId}/oidc/configs/${$oidc.uuid}`
-    window.location = url
+    await (await organisation.init()).oidc.init()
+    if (organisation.oidc) {
+      const url = `/api/global/auth/${$auth.tenantId}/oidc/configs/${$oidc.uuid}`
+      window.location = url
+    }
   }
 
   async function login() {
