@@ -54,6 +54,7 @@ export function createAdminStore() {
       store.accountPortalUrl = environment.accountPortalUrl
       store.isDev = environment.isDev
       store.baseUrl = environment.baseUrl
+      store.directoidc = environment.directoidc
       return store
     })
   }
