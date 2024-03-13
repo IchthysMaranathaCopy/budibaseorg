@@ -48,6 +48,7 @@ const environment = {
   NODE_ENV: process.env.NODE_ENV,
   SELF_HOSTED: !!parseInt(process.env.SELF_HOSTED || ""),
   LOG_LEVEL: process.env.LOG_LEVEL,
+  DIRECT_OIDC: process.env.DIRECT_OIDC,
   MULTI_TENANCY: process.env.MULTI_TENANCY,
   DISABLE_ACCOUNT_PORTAL: process.env.DISABLE_ACCOUNT_PORTAL,
   SMTP_FALLBACK_ENABLED: process.env.SMTP_FALLBACK_ENABLED,
