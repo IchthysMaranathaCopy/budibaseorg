@@ -35,35 +35,33 @@
         const url = `/api/global/auth/${$auth.tenantId}/oidc/configs/${$oidc.uuid}`
         window.location = url
       })
-  }
-
-  async function login() {
-    form.validate()
-    if (Object.keys(errors).length > 0) {
-      console.log("errors", errors)
-      return
-    }
-    try {
-      await auth.login({
-        username: formData?.username.trim(),
-        password: formData?.password,
-      })
-      if ($auth?.user?.forceResetPassword) {
-        $goto("./reset")
-      } else {
-        notifications.success("Logged in successfully")
-        $goto("../portal")
+  } else {
+    async function login() {
+      form.validate()
+      if (Object.keys(errors).length > 0) {
+        console.log("errors", errors)
+        return
       }
-    } catch (err) {
-      notifications.error(err.message ? err.message : "Invalid credentials")
+      try {
+        await auth.login({
+          username: formData?.username.trim(),
+          password: formData?.password,
+        })
+        if ($auth?.user?.forceResetPassword) {
+          $goto("./reset")
+        } else {
+          notifications.success("Logged in successfully")
+          $goto("../portal")
+        }
+      } catch (err) {
+        notifications.error(err.message ? err.message : "Invalid credentials")
+      }
     }
-  }
 
-  function handleKeydown(evt) {
-    if (evt.key === "Enter") login()
-  }
+    function handleKeydown(evt) {
+      if (evt.key === "Enter") login()
+    }
 
-  if (!$organisation.isSSOEnforced) {
     onMount(async () => {
       try {
         await organisation.init()
