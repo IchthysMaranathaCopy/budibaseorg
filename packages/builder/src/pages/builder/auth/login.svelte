@@ -28,11 +28,13 @@
   $: cloud = $admin.cloud
 
   if ($organisation.isSSOEnforced) {
-    organisation.init().oidc.init()
-    if (organisation.oidc) {
-      const url = `/api/global/auth/${$auth.tenantId}/oidc/configs/${$oidc.uuid}`
-      window.location = url
-    }
+    organisation
+      .init()
+      .then(() => oidc.init())
+      .then(() => {
+        const url = `/api/global/auth/${$auth.tenantId}/oidc/configs/${$oidc.uuid}`
+        window.location = url
+      })
   }
 
   async function login() {
@@ -61,14 +63,16 @@
     if (evt.key === "Enter") login()
   }
 
-  onMount(async () => {
-    try {
-      await organisation.init()
-    } catch (error) {
-      notifications.error("Error getting org config")
-    }
-    loaded = true
-  })
+  if (!$organisation.isSSOEnforced) {
+    onMount(async () => {
+      try {
+        await organisation.init()
+      } catch (error) {
+        notifications.error("Error getting org config")
+      }
+      loaded = true
+    })
+  }
 </script>
 
 <svelte:window on:keydown={handleKeydown} />
