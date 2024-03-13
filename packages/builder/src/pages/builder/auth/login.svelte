@@ -35,8 +35,9 @@
         const url = `/api/global/auth/${$auth.tenantId}/oidc/configs/${$oidc.uuid}`
         window.location = url
       })
-  } else {
-    async function login() {
+  }
+  async function login() {
+    if (!$organisation.isSSOEnforced) {
       form.validate()
       if (Object.keys(errors).length > 0) {
         console.log("errors", errors)
@@ -57,11 +58,8 @@
         notifications.error(err.message ? err.message : "Invalid credentials")
       }
     }
-
-    function handleKeydown(evt) {
-      if (evt.key === "Enter") login()
-    }
-
+  }
+  if (!$organisation.isSSOEnforced) {
     onMount(async () => {
       try {
         await organisation.init()
@@ -73,7 +71,6 @@
   }
 </script>
 
-<svelte:window on:keydown={handleKeydown} />
 {#if loaded}
   <TestimonialPage enabled={$organisation.testimonialsEnabled}>
     <Layout gap="L" noPadding>
