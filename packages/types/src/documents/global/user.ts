@@ -10,6 +10,7 @@ export interface SSOProfileJson {
 export interface OAuth2 {
   accessToken: string
   refreshToken?: string
+  idToken?: string
 }
 
 export enum SSOProviderType {
