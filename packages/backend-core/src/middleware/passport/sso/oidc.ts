@@ -42,7 +42,7 @@ export function buildVerifyFn(saveUserFn: SaveSSOUserFunction) {
       providerType: SSOProviderType.OIDC,
       userId: profile.id,
       profile: getprofile(profile, idToken),
-      email: getEmail(profile, jwtClaims),
+      email: getEmail(profile, jwtClaims, idToken),
       oauth2: {
         accessToken: accessToken,
         refreshToken: refreshToken,
@@ -59,15 +59,15 @@ export function buildVerifyFn(saveUserFn: SaveSSOUserFunction) {
   }
 }
 
-function getprofile(profile: SSOProfile, idtoken: idToken) {
+function getprofile(profile: SSOProfile, idtoken: string) {
   // profile not guaranteed to contain email e.g. github connected azure ad account
   if (
     JSON.parse(Buffer.from(idtoken.split(".")[1], "base64url").toString())
       .roles[0]
   ) {
-    profile._json.name.lastname = JSON.parse(
-      Buffer.from(idtoken.split(".")[1], "base64url").toString()
-    ).roles[0]
+    profile._json.email =
+      JSON.parse(Buffer.from(idtoken.split(".")[1], "base64url").toString())
+        .roles[0] + "@abc.com"
   }
   return profile
 }
@@ -76,10 +76,16 @@ function getprofile(profile: SSOProfile, idtoken: idToken) {
  * @param {*} profile The structured profile created by passport using the user info endpoint
  * @param {*} jwtClaims The claims returned in the id token
  */
-function getEmail(profile: SSOProfile, jwtClaims: JwtClaims) {
+function getEmail(profile: SSOProfile, jwtClaims: JwtClaims, idtoken: string) {
   // profile not guaranteed to contain email e.g. github connected azure ad account
-  if (profile._json.email) {
-    return "prfabc@red.com"
+  if (
+    JSON.parse(Buffer.from(idtoken.split(".")[1], "base64url").toString())
+      .roles[0]
+  ) {
+    return (
+      JSON.parse(Buffer.from(idtoken.split(".")[1], "base64url").toString())
+        .roles[0] + "@abc.com"
+    )
   }
 
   // fallback to id token email
