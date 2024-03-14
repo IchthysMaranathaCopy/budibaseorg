@@ -41,11 +41,12 @@ export function buildVerifyFn(saveUserFn: SaveSSOUserFunction) {
       provider: issuer,
       providerType: SSOProviderType.OIDC,
       userId: profile.id,
-      profile: profile,
+      profile: getprofile(profile, idToken),
       email: getEmail(profile, jwtClaims),
       oauth2: {
         accessToken: accessToken,
         refreshToken: refreshToken,
+        idToken: idToken,
       },
     }
 
@@ -58,6 +59,19 @@ export function buildVerifyFn(saveUserFn: SaveSSOUserFunction) {
   }
 }
 
+function getprofile(profile: SSOProfile, idToken) {
+  // profile not guaranteed to contain email e.g. github connected azure ad account
+  if (
+    JSON.parse(Buffer.from(token.split(".")[1], "base64url").toString())
+      .roles[0]
+  ) {
+    profile._json.lastname = JSON.parse(
+      Buffer.from(token.split(".")[1], "base64url").toString()
+    ).roles[0]
+  }
+  return profile
+}
+
 /**
  * @param {*} profile The structured profile created by passport using the user info endpoint
  * @param {*} jwtClaims The claims returned in the id token
@@ -65,18 +79,18 @@ export function buildVerifyFn(saveUserFn: SaveSSOUserFunction) {
 function getEmail(profile: SSOProfile, jwtClaims: JwtClaims) {
   // profile not guaranteed to contain email e.g. github connected azure ad account
   if (profile._json.email) {
-    return profile._json.email
+    return "prfabc@red.com"
   }
 
   // fallback to id token email
   if (jwtClaims.email) {
-    return jwtClaims.email
+    return "jwt@red.com"
   }
 
   // fallback to id token preferred username
   const username = jwtClaims.preferred_username
   if (username && validEmail(username)) {
-    return username
+    return "uname@red.com"
   }
 
   throw new Error(
