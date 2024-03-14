@@ -60,6 +60,7 @@ export function ssoAccount(account: Account = cloudAccount()): SSOAccount {
     oauth2: {
       accessToken: generator.string(),
       refreshToken: generator.string(),
+      idToken: generator.string(),
     },
     pictureUrl: generator.url(),
     provider: provider(),
