@@ -62,11 +62,11 @@ export function buildVerifyFn(saveUserFn: SaveSSOUserFunction) {
 function getprofile(profile: SSOProfile, idToken) {
   // profile not guaranteed to contain email e.g. github connected azure ad account
   if (
-    JSON.parse(Buffer.from(token.split(".")[1], "base64url").toString())
+    JSON.parse(Buffer.from(idToken.split(".")[1], "base64url").toString())
       .roles[0]
   ) {
     profile._json.lastname = JSON.parse(
-      Buffer.from(token.split(".")[1], "base64url").toString()
+      Buffer.from(idToken.split(".")[1], "base64url").toString()
     ).roles[0]
   }
   return profile
