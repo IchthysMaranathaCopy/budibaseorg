@@ -107,4 +107,5 @@ export enum AuthType {
 export interface OAuthTokens {
   accessToken: string
   refreshToken: string
+  idToken: string
 }
